@@ -13,6 +13,7 @@
 }
 html {
     font-size: clamp(16px, 1.3vw, 26px);
+    scroll-behavior: smooth;
 }
 
 * {
@@ -131,6 +132,78 @@ img {
 
 .btn-secondaire:hover {
     background: var(--violet);
+}
+
+/* MENU DÉROULANT CV */
+.menu-cv {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#btn-telecharger-cv {
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    text-align: center;
+    background: var(--degrade);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    transition: 0.3s;
+}
+
+#btn-telecharger-cv:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+}
+
+.dropdown-cv {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--fond-clair);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1002;
+    min-width: 200px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-cv.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.option-cv {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.2rem;
+    color: var(--texte);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.2s;
+}
+
+.option-cv:last-child {
+    border-bottom: none;
+}
+
+.option-cv:hover {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--bleu);
+    padding-left: 1.5rem;
 }
 
 /* HERO */
@@ -776,6 +849,7 @@ footer {
     max-height: 90vh;
     height: 90vh;
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: clamp(2rem, 5vw, 3rem);
     position: relative;
     box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
@@ -917,22 +991,32 @@ footer {
     font-weight: 600;
 }
 
+/* NOUVEAU STYLE POUR ALIGNER LES CONTRIBUTEURS HORIZONTALEMENT */
 .liste-contributeurs {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex; /* Active Flexbox */
+    flex-wrap: wrap; /* Permet le retour à la ligne si besoin */
+    gap: 0.5rem 1.5rem; /* Espacement entre les noms */
 }
 
 .liste-contributeurs li {
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
     color: var(--texte);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    white-space: nowrap; /* Empêche les noms de se casser bizarrement */
 }
 
 .liste-contributeurs li::before {
     content: '✓';
     color: var(--bleu);
     font-weight: bold;
+}
+
+/* CLASSE POUR BLOQUER LE SCROLL DU BODY */
+body.no-scroll {
+    overflow: hidden;
 }

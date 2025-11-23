@@ -19,7 +19,17 @@
         </ul>
         <div class="boutons-nav">
             <button id="bouton-langue" class="btn-secondaire">EN</button>
-            <a href="CV.pdf" download="CV_Kilyan_Gibert.pdf" class="btn-primaire" data-i18n="btn_telecharger">Télécharger CV</a>
+            <div class="menu-cv">
+                <button id="btn-telecharger-cv" class="btn-primaire" data-i18n="btn_telecharger">Télécharger CV</button>
+                <div class="dropdown-cv">
+                    <a href="CV_FR.pdf" download="CV_Kilyan_Gibert_FR.pdf" class="option-cv">
+                        <i class="fas fa-file-pdf"></i> Français
+                    </a>
+                    <a href="CV_EN.pdf" download="CV_Kilyan_Gibert_EN.pdf" class="option-cv">
+                        <i class="fas fa-file-pdf"></i> English
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -71,7 +81,7 @@
                             <span class="date">2024 - Présent</span>
                             <h4 data-i18n="titre_but">BUT Informatique (2ème année)</h4>
                             <p class="lieu">Université Savoie Mont Blanc / IUT Annecy</p>
-                            <p data-i18n="desc_but">Bachelor Universitaire de Technologie en informatique.</p>
+                            <p data-i18n="desc_but">Bachelor Universitaire de Technologie en informatique (En cours).</p>
                         </div>
                         <div class="element-chrono" style="border-bottom: none;">
                             <span class="date">2020 - 2024</span>
@@ -127,7 +137,7 @@
                                     <span>HTML / CSS</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%;"></div>
+                                    <div class="skill-progress" style="width: 85%;"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -143,7 +153,7 @@
                                     <span>PHP / Laravel</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%;"></div>
+                                    <div class="skill-progress" style="width: 60%;"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -151,7 +161,7 @@
                                     <span>C#</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 70%;"></div>
+                                    <div class="skill-progress" style="width: 75%;"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -159,7 +169,7 @@
                                     <span>SQL / PostgreSQL</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%;"></div>
+                                    <div class="skill-progress" style="width: 70%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +180,7 @@
                                     <span>Linux / Ubuntu</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%;"></div>
+                                    <div class="skill-progress" style="width: 70%;"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -178,7 +188,7 @@
                                     <span>Windows</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%;"></div>
+                                    <div class="skill-progress" style="width: 95%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -200,7 +210,7 @@
                     <div class="boite-laterale">
                         <div class="skill-item">
                             <div class="skill-header">
-                                <span data-i18n="lang_fr">Français</span>
+                                <span data-i18n="lang_fr">Français :</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 100%;"></div>
@@ -208,7 +218,7 @@
                         </div>
                         <div class="skill-item">
                             <div class="skill-header">
-                                <span data-i18n="lang_en">Anglais</span>
+                                <span data-i18n="lang_en">Anglais :</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 75%;"></div>
@@ -217,8 +227,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -226,74 +234,48 @@
         <h2 class="titre-section" data-i18n="nav_projets">Mes Projets</h2>
         
         <div class="conteneur-carrousel">
-            <div class="carte-projet active" data-projet-id="1" data-projet-nom="SAE Application Nicolas" data-projet-desc="Application de gestion pour une entreprise vinicole. Gestion des stocks, clients et commandes avec interface conviviale développée en WPF." data-projet-github="https://github.com/MateoLeVre/SAE201-Dev">
+            <div class="carte-projet active" data-projet-id="1">
                 <div class="contenu-carte">
                     <div class="info-projet">
                         <h3>SAE Application Nicolas</h3>
-                        <p data-i18n="projet_1_desc">Application desktop WPF pour la gestion d'une entreprise de vin. Gestion complète des stocks, clients et commandes.</p>
+                        <p data-i18n="projet_1_desc">Application desktop WPF pour la gestion d'une entreprise de vin.</p>
                     </div>
                     <div class="pile-techno">
                         <span>WPF</span><span>C#</span><span>PostgreSQL</span>
                     </div>
-                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="1">
+                    <a href="#" class="lien-bouton btn-modal-projet">
                         <span data-i18n="btn_savoir_plus">En savoir plus</span> <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="carte-projet suivante" data-projet-id="2" data-projet-nom="Application C#" data-projet-desc="Application desktop pour la gestion de projets avec interface moderne. Intégration base de données SQL Server." data-projet-github="https://github.com/abriiiic/csharp-app">
+            <div class="carte-projet suivante" data-projet-id="2">
                 <div class="contenu-carte">
                     <div class="info-projet">
-                        <h3>Application C#</h3>
-                        <p data-i18n="projet_2_desc">Développement d'une application desktop sous Windows utilisant C#.</p>
-                    </div>
-                    <div class="pile-techno">
-                        <span>C#</span><span>.NET</span><span>Windows</span>
-                    </div>
-                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="2">
-                        <span data-i18n="btn_savoir_plus">En savoir plus</span> <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="carte-projet precedente" data-projet-id="3" data-projet-nom="Portfolio Personnel" data-projet-desc="Site web responsive présentant mon parcours, mes compétences et mes projets. Design moderne avec animations." data-projet-github="https://github.com/abriiiic/portfolio">
-                <div class="contenu-carte">
-                    <div class="info-projet">
-                        <h3>Portfolio Personnel</h3>
-                        <p data-i18n="projet_3_desc">Site web responsive présentant mon parcours et mes compétences.</p>
+                        <h3 data-i18n="projet_2_titre">Portfolio Personnel</h3>
+                        <p data-i18n="projet_2_desc">Site web responsive présentant mon parcours et mes compétences.</p>
                     </div>
                     <div class="pile-techno">
                         <span>HTML</span><span>CSS</span><span>JS</span>
                     </div>
-                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="3">
+                    <a href="#" class="lien-bouton btn-modal-projet">
                         <span data-i18n="btn_savoir_plus">En savoir plus</span> <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="carte-projet suivante" data-projet-id="2" data-projet-nom="Application C#" data-projet-desc="Application desktop pour la gestion de projets avec interface moderne. Intégration base de données SQL Server." data-projet-github="https://github.com/abriiiic/csharp-app">
+            <div class="carte-projet precedente" data-projet-id="3">
                 <div class="contenu-carte">
                     <div class="info-projet">
-                        <h3>Application C#</h3>
-                        <p data-i18n="projet_2_desc">Développement d'une application desktop sous Windows utilisant C#.</p>
+                        <h3 data-i18n="projet_3_titre">SAE Site Web Club Med</h3>
+                        <p data-i18n="projet_3_desc">Reproduction complète du site du Club Med avec Laravel.</p>
                     </div>
                     <div class="pile-techno">
-                        <span>C#</span><span>.NET</span><span>Windows</span>
+                        <span>Laravel</span><span>PostgreSQL</span><span>Blade</span>
                     </div>
-                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="2">En savoir plus <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="carte-projet precedente" data-projet-id="3" data-projet-nom="Portfolio Personnel" data-projet-desc="Site web responsive présentant mon parcours, mes compétences et mes projets. Design moderne avec animations." data-projet-github="https://github.com/abriiiic/portfolio">
-                <div class="contenu-carte">
-                    <div class="info-projet">
-                        <h3>Portfolio Personnel</h3>
-                        <p data-i18n="projet_3_desc">Site web responsive présentant mon parcours et mes compétences.</p>
-                    </div>
-                    <div class="pile-techno">
-                        <span>HTML</span><span>CSS</span><span>JS</span>
-                    </div>
-                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="3">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="lien-bouton btn-modal-projet">
+                        <span data-i18n="btn_savoir_plus">En savoir plus</span> <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
 
@@ -303,7 +285,6 @@
             </div>
         </div>
 
-        <!-- Modale Projet -->
         <div id="modale-projet" class="modale">
             <div class="contenu-modale">
                 <button class="btn-fermer-modale"><i class="fas fa-times"></i></button>
@@ -317,35 +298,25 @@
 
                 <div class="galerie-images">
                     <div class="conteneur-image">
-                        <img id="modal-image-principale" src="image.jpg" alt="Image du projet">
+                        <img id="modal-image-principale" src="image.jpg" alt="Image du projet" onerror="this.style.display='none';">
                     </div>
                     <div class="miniatures">
-                        <img class="vignette" src="image1.jpg" alt="Vignette 1">
-                        <img class="vignette" src="image2.jpg" alt="Vignette 2">
-                        <img class="vignette" src="image3.jpg" alt="Vignette 3">
-                    </div>
+                        </div>
                 </div>
 
                 <div class="modale-corps">
                     <div class="section-description">
-                        <h3>Description</h3>
-                        <p id="modal-description">Description du projet...</p>
+                        <h3 data-i18n="modal_desc">Description</h3> <p id="modal-description">Description du projet...</p>
                     </div>
 
                     <div class="section-technologies">
-                        <h3>Langages utilisés</h3>
-                        <div id="modal-technologies" class="liste-technologies">
-                            <span class="tag-tech">HTML</span>
-                            <span class="tag-tech">CSS</span>
-                            <span class="tag-tech">JavaScript</span>
-                        </div>
+                        <h3 data-i18n="modal_tech">Langages utilisés</h3> <div id="modal-technologies" class="liste-technologies">
+                            </div>
                     </div>
 
                     <div class="section-contributeurs">
-                        <h3>Contributeurs</h3>
-                        <ul id="modal-contributeurs" class="liste-contributeurs">
-                            <li>Kilyan Gibert</li>
-                        </ul>
+                        <h3 data-i18n="modal_contrib">Contributeurs</h3> <ul id="modal-contributeurs" class="liste-contributeurs">
+                            </ul>
                     </div>
                 </div>
             </div>
