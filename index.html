@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Kilyan Gibert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="barre-nav">
+        <div class="logo">Kilyan<span>.Dev</span></div>
+        <ul class="liens-nav">
+            <li><a href="#accueil" data-i18n="nav_accueil">Accueil</a></li>
+            <li><a href="#cv" data-i18n="nav_cv">Mon CV</a></li>
+            <li><a href="#projets" data-i18n="nav_projets">Projets</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <div class="boutons-nav">
+            <button id="bouton-langue" class="btn-secondaire">EN</button>
+            <a href="CV.pdf" download="CV_Kilyan_Gibert.pdf" class="btn-primaire" data-i18n="btn_telecharger">Télécharger CV</a>
+        </div>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <header id="accueil" class="banniere">
+        <div class="animation-fond">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="conteneur-banniere">
+            <div class="texte-banniere cache">
+                <span class="badge">Portfolio 2025</span>
+                <h2 data-i18n="banniere_salutation">Bonjour, je suis</h2>
+                <h1>Kilyan Gibert</h1>
+                <h3 class="texte-degrade" data-i18n="banniere_role">Étudiant en Informatique</h3>
+                <p data-i18n="banniere_desc">Actuellement en 2ème année de BUT Informatique à l'IUT d'Annecy. Je suis à la recherche d'un stage pour approfondir mes connaissances.</p>
+                
+                <div class="infos-banniere">
+                    <span><i class="fas fa-map-marker-alt"></i> Seynod (74)</span>
+                    <span data-i18n="permis"><i class="fas fa-car"></i> Permis B</span>
+                </div>
+
+                <div class="boutons-action">
+                    <a href="#projets" class="btn-primaire" data-i18n="btn_projets">Voir mes projets</a>
+                    <a href="#contact" class="btn-secondaire" data-i18n="btn_contact">Me contacter</a>
+                </div>
+            </div>
+            
+            <div class="visuel-banniere cache">
+                <div class="cadre-profil">
+                    <img src="photo.jpg" alt="Kilyan Gibert" class="img-profil" onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#1e293b'">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="cv" class="section">
+        <h2 class="titre-section" data-i18n="nav_cv">Mon CV</h2>
+        
+        <div class="grille-cv">
+            <div class="colonne-principale">
+                <div class="bloc-cv cache">
+                    <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="cv_formation">Formation</span></h3>
+                    <div class="boite-contenu">
+                        <div class="element-chrono">
+                            <span class="date">2024 - Présent</span>
+                            <h4 data-i18n="titre_but">BUT Informatique (2ème année)</h4>
+                            <p class="lieu">Université Savoie Mont Blanc / IUT Annecy</p>
+                            <p data-i18n="desc_but">Bachelor Universitaire de Technologie en informatique.</p>
+                        </div>
+                        <div class="element-chrono" style="border-bottom: none;">
+                            <span class="date">2020 - 2024</span>
+                            <h4 data-i18n="titre_bac">Baccalauréat Général</h4>
+                            <p class="lieu">Lycée de la Plaine de l'Ain, Ambérieu-en-Bugey</p>
+                            <p data-i18n="desc_bac">Spécialités Mathématiques et Physique-Chimie.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bloc-cv cache">
+                    <h3><i class="fas fa-briefcase"></i> <span data-i18n="cv_experience">Expérience</span></h3>
+                    <div class="boite-contenu">
+                        <div class="element-chrono">
+                            <span class="date">2025 - 2026</span>
+                            <h4 data-i18n="titre_projet_univ">Projet Universitaire en Équipe</h4>
+                            <p class="lieu">USMB Annecy</p>
+                            <ul class="details-job">
+                                <li data-i18n="desc_projet_1">Utilisation de la méthode Agile et diagrammes UML.</li>
+                                <li data-i18n="desc_projet_2">Création d'un site PHP avec Laravel et conception de la base SQL.</li>
+                            </ul>
+                        </div>
+                        <div class="element-chrono">
+                            <span class="date">Juillet - Août 2025</span>
+                            <h4 data-i18n="titre_job_netto">Employé de Rayon</h4>
+                            <p class="lieu">Netto, Ambérieu-en-Bugey</p>
+                            <ul class="details-job">
+                                <li data-i18n="desc_job_netto_1">Supervision et organisation des rayons avec le responsable.</li>
+                                <li data-i18n="desc_job_netto_2">Maintien de l'attractivité et respect des standards.</li>
+                            </ul>
+                        </div>
+                         <div class="element-chrono" style="border-bottom: none;">
+                            <span class="date">2022 - 2023</span>
+                            <h4 data-i18n="titre_job_basket">Assistant Coach Basket</h4>
+                            <p class="lieu">Ambérieu-en-Bugey</p>
+                            <ul class="details-job">
+                                <li data-i18n="desc_job_basket_1">Entraînement d'une équipe de jeunes.</li>
+                                <li data-i18n="desc_job_basket_2">Préparation des sessions (technique, tactique, physique).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="colonne-laterale cache">
+                <div class="bloc-cv">
+                    <h3 data-i18n="cv_competences">Compétences</h3>
+                    <div class="boite-laterale">
+                        <div class="categorie-skill">
+                            <strong data-i18n="cat_technique">Technique</strong>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>HTML / CSS</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>PHP / Laravel</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>C#</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>SQL / PostgreSQL</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="categorie-skill">
+                            <strong data-i18n="cat_systemes">Systèmes</strong>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Linux / Ubuntu</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Windows</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bloc-cv">
+                    <h3 data-i18n="cv_interets">Intérêts</h3>
+                    <div class="boite-laterale">
+                        <ul class="liste-hobbies">
+                            <li><i class="fas fa-basketball-ball"></i> <span data-i18n="hobby_basket">Basket (en club)</span></li>
+                            <li><i class="fas fa-gamepad"></i> <span data-i18n="hobby_jeux">Jeux vidéo (FPS, MOBA...)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bloc-cv">
+                    <h3 data-i18n="cv_langues">Langues</h3>
+                    <div class="boite-laterale">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span data-i18n="lang_fr">Français</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span data-i18n="lang_en">Anglais</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section id="projets" class="section">
+        <h2 class="titre-section" data-i18n="nav_projets">Mes Projets</h2>
+        
+        <div class="conteneur-carrousel">
+            <div class="carte-projet active" data-projet-id="1" data-projet-nom="SAE Application Nicolas" data-projet-desc="Application de gestion pour une entreprise vinicole. Gestion des stocks, clients et commandes avec interface conviviale développée en WPF." data-projet-github="https://github.com/MateoLeVre/SAE201-Dev">
+                <div class="contenu-carte">
+                    <div class="info-projet">
+                        <h3>SAE Application Nicolas</h3>
+                        <p data-i18n="projet_1_desc">Application desktop WPF pour la gestion d'une entreprise de vin. Gestion complète des stocks, clients et commandes.</p>
+                    </div>
+                    <div class="pile-techno">
+                        <span>WPF</span><span>C#</span><span>PostgreSQL</span>
+                    </div>
+                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="1">
+                        <span data-i18n="btn_savoir_plus">En savoir plus</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carte-projet suivante" data-projet-id="2" data-projet-nom="Application C#" data-projet-desc="Application desktop pour la gestion de projets avec interface moderne. Intégration base de données SQL Server." data-projet-github="https://github.com/abriiiic/csharp-app">
+                <div class="contenu-carte">
+                    <div class="info-projet">
+                        <h3>Application C#</h3>
+                        <p data-i18n="projet_2_desc">Développement d'une application desktop sous Windows utilisant C#.</p>
+                    </div>
+                    <div class="pile-techno">
+                        <span>C#</span><span>.NET</span><span>Windows</span>
+                    </div>
+                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="2">
+                        <span data-i18n="btn_savoir_plus">En savoir plus</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carte-projet precedente" data-projet-id="3" data-projet-nom="Portfolio Personnel" data-projet-desc="Site web responsive présentant mon parcours, mes compétences et mes projets. Design moderne avec animations." data-projet-github="https://github.com/abriiiic/portfolio">
+                <div class="contenu-carte">
+                    <div class="info-projet">
+                        <h3>Portfolio Personnel</h3>
+                        <p data-i18n="projet_3_desc">Site web responsive présentant mon parcours et mes compétences.</p>
+                    </div>
+                    <div class="pile-techno">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="3">
+                        <span data-i18n="btn_savoir_plus">En savoir plus</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carte-projet suivante" data-projet-id="2" data-projet-nom="Application C#" data-projet-desc="Application desktop pour la gestion de projets avec interface moderne. Intégration base de données SQL Server." data-projet-github="https://github.com/abriiiic/csharp-app">
+                <div class="contenu-carte">
+                    <div class="info-projet">
+                        <h3>Application C#</h3>
+                        <p data-i18n="projet_2_desc">Développement d'une application desktop sous Windows utilisant C#.</p>
+                    </div>
+                    <div class="pile-techno">
+                        <span>C#</span><span>.NET</span><span>Windows</span>
+                    </div>
+                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="2">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="carte-projet precedente" data-projet-id="3" data-projet-nom="Portfolio Personnel" data-projet-desc="Site web responsive présentant mon parcours, mes compétences et mes projets. Design moderne avec animations." data-projet-github="https://github.com/abriiiic/portfolio">
+                <div class="contenu-carte">
+                    <div class="info-projet">
+                        <h3>Portfolio Personnel</h3>
+                        <p data-i18n="projet_3_desc">Site web responsive présentant mon parcours et mes compétences.</p>
+                    </div>
+                    <div class="pile-techno">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                    <a href="#" class="lien-bouton btn-modal-projet" data-projet-id="3">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="nav-carrousel">
+                <button id="btn-prec" class="btn-nav"><i class="fas fa-chevron-left"></i></button>
+                <button id="btn-suiv" class="btn-nav"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Modale Projet -->
+        <div id="modale-projet" class="modale">
+            <div class="contenu-modale">
+                <button class="btn-fermer-modale"><i class="fas fa-times"></i></button>
+                
+                <div class="modale-entete">
+                    <h2 id="modal-titre-projet">Titre du Projet</h2>
+                    <a id="modal-lien-github" href="#" target="_blank" class="btn-primaire btn-github">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+
+                <div class="galerie-images">
+                    <div class="conteneur-image">
+                        <img id="modal-image-principale" src="image.jpg" alt="Image du projet">
+                    </div>
+                    <div class="miniatures">
+                        <img class="vignette" src="image1.jpg" alt="Vignette 1">
+                        <img class="vignette" src="image2.jpg" alt="Vignette 2">
+                        <img class="vignette" src="image3.jpg" alt="Vignette 3">
+                    </div>
+                </div>
+
+                <div class="modale-corps">
+                    <div class="section-description">
+                        <h3>Description</h3>
+                        <p id="modal-description">Description du projet...</p>
+                    </div>
+
+                    <div class="section-technologies">
+                        <h3>Langages utilisés</h3>
+                        <div id="modal-technologies" class="liste-technologies">
+                            <span class="tag-tech">HTML</span>
+                            <span class="tag-tech">CSS</span>
+                            <span class="tag-tech">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="section-contributeurs">
+                        <h3>Contributeurs</h3>
+                        <ul id="modal-contributeurs" class="liste-contributeurs">
+                            <li>Kilyan Gibert</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section section-contact">
+        <h2 class="titre-section" data-i18n="nav_contact">Contactez-moi</h2>
+        <div class="enveloppe-contact">
+            <div class="carte-contact carte-info cache">
+                <h3>Mes Coordonnées</h3>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <span data-i18n="label_tel">Téléphone</span>
+                        <p>+33 6 34 53 27 31</p>
+                    </div>
+                </div>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <span data-i18n="label_adresse">Adresse</span>
+                        <p>Seynod, 74600, France</p>
+                    </div>
+                </div>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fab fa-linkedin"></i></div>
+                    <div>
+                        <a id="btn-linkedin" class="btn-lien" href="https://www.linkedin.com/in/kilyan-gibert-17777633b" target="_blank" rel="noopener noreferrer">
+                            <span data-i18n="label_linkedin">LinkedIn</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fab fa-github"></i></div>
+                    <div>
+                        <a id="btn-github" class="btn-lien" href="https://github.com/abriiiic" target="_blank" rel="noopener noreferrer">
+                            <span data-i18n="label_github">GitHub</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carte-contact carte-formulaire cache">
+                <form class="formulaire-contact" action="https://formspree.io/f/xpwbyrnk" method="POST">
+                    <div class="groupe-input">
+                        <label>Nom / Name</label>
+                        <input type="text" name="nom" required>
+                    </div>
+                    <div class="groupe-input">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="groupe-input">
+                        <label>Message</label>
+                        <textarea rows="5" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primaire" data-i18n="btn_envoyer">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Kilyan Gibert. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
