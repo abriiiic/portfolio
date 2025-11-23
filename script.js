@@ -146,9 +146,9 @@ if (boutonLangue) {
 }
 
 /* --- 4. Menu Mobile (Amélioré) --- */
-const hamburger = document.querySelector(".hamburger");
-const navBar = document.querySelector(".barre-nav");
-const liensMenu = document.querySelectorAll(".liens-nav a"); 
+const hamburger = document.querySelector(".menu-burger");
+const navBar = document.querySelector(".barre-navigation");
+const liensMenu = document.querySelectorAll(".liens-navigation a"); 
 
 if (hamburger && navBar) {
     // Ouvrir / Fermer le menu
@@ -195,8 +195,8 @@ if (hamburger && navBar) {
 
 /* --- 5. Menu Déroulant Télécharger CV --- */
 const btnTelechargerCV = document.querySelector('#btn-telecharger-cv');
-const dropdownCV = document.querySelector('.dropdown-cv');
-const optionsCV = document.querySelectorAll('.option-cv');
+const dropdownCV = document.querySelector('.menu-deroulant-cv');
+const optionsCV = document.querySelectorAll('.option-telecharger');
 
 if (btnTelechargerCV && dropdownCV) {
     // Ouvrir/Fermer le menu en cliquant sur le bouton
@@ -221,7 +221,7 @@ if (btnTelechargerCV && dropdownCV) {
 }
 
 /* --- 5. Logique du Carrousel --- */
-const cartes = document.querySelectorAll('.carte-projet');
+const cartes = document.querySelectorAll('.carte-portfolio');
 const btnPrec = document.querySelector('#btn-prec');
 const btnSuiv = document.querySelector('#btn-suiv');
 let indexActuel = 0;
@@ -322,8 +322,8 @@ const donneesProjectes = {
     }
 };
 
-const modale = document.querySelector('#modale-projet');
-const btnsFermer = document.querySelectorAll('.btn-fermer-modale');
+const modale = document.querySelector('#fenetre-portfolio');
+const btnsFermer = document.querySelectorAll('.bouton-fermer');
 
 function attachModalEvents() {
     document.querySelectorAll('.btn-modal-projet').forEach(btn => {
@@ -334,7 +334,7 @@ function attachModalEvents() {
 
 function handleModalClick(e) {
     e.preventDefault();
-    const carte = e.target.closest('.carte-projet');
+    const carte = e.target.closest('.carte-portfolio');
     const projetId = carte.getAttribute('data-projet-id');
     ouvrirModale(projetId);
 }
@@ -412,3 +412,4 @@ const observateur = new IntersectionObserver((entrees) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll(".cache").forEach((el) => observateur.observe(el));
+
