@@ -146,9 +146,9 @@ if (boutonLangue) {
 }
 
 /* --- 4. Menu Mobile (Amélioré) --- */
-const hamburger = document.querySelector(".menu-burger");
-const navBar = document.querySelector(".barre-navigation");
-const liensMenu = document.querySelectorAll(".liens-navigation a"); 
+const hamburger = document.querySelector(".hamburger");
+const navBar = document.querySelector(".barre-nav");
+const liensMenu = document.querySelectorAll(".liens-nav a"); 
 
 if (hamburger && navBar) {
     // Ouvrir / Fermer le menu
@@ -168,60 +168,19 @@ if (hamburger && navBar) {
 
     // Fermer le menu quand on clique sur un lien
     liensMenu.forEach(lien => {
-        lien.addEventListener("click", (e) => {
-            // Fermer le menu mobile
+        lien.addEventListener("click", () => {
             navBar.classList.remove("active");
             const icon = hamburger.querySelector('i');
             if (icon) {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
-            
-            // Gérer le scroll fluide
-            const href = lien.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                const element = document.querySelector(href);
-                if (element) {
-                    // Ajouter un petit délai pour fermer le menu avant de scroller
-                    setTimeout(() => {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
-                }
-            }
         });
-    });
-}
-
-/* --- 5. Menu Déroulant Télécharger CV --- */
-const btnTelechargerCV = document.querySelector('#btn-telecharger-cv');
-const dropdownCV = document.querySelector('.menu-deroulant-cv');
-const optionsCV = document.querySelectorAll('.option-telecharger');
-
-if (btnTelechargerCV && dropdownCV) {
-    // Ouvrir/Fermer le menu en cliquant sur le bouton
-    btnTelechargerCV.addEventListener('click', (e) => {
-        e.preventDefault();
-        dropdownCV.classList.toggle('active');
-    });
-
-    // Fermer le menu quand on clique sur une option
-    optionsCV.forEach(option => {
-        option.addEventListener('click', () => {
-            dropdownCV.classList.remove('active');
-        });
-    });
-
-    // Fermer le menu quand on clique ailleurs
-    document.addEventListener('click', (e) => {
-        if (!btnTelechargerCV.contains(e.target) && !dropdownCV.contains(e.target)) {
-            dropdownCV.classList.remove('active');
-        }
     });
 }
 
 /* --- 5. Logique du Carrousel --- */
-const cartes = document.querySelectorAll('.carte-portfolio');
+const cartes = document.querySelectorAll('.carte-projet');
 const btnPrec = document.querySelector('#btn-prec');
 const btnSuiv = document.querySelector('#btn-suiv');
 let indexActuel = 0;
@@ -256,23 +215,6 @@ if (btnSuiv && btnPrec) {
 
 // Initialiser le carrousel au chargement
 majCarrousel();
-
-/* --- 6. Smooth Scroll pour les Boutons d'Action --- */
-document.querySelectorAll('a[href^="#"]').forEach(lien => {
-    // Exclure les liens du menu (déjà traités)
-    if (!lien.classList.contains('btn-modal-projet')) {
-        lien.addEventListener('click', (e) => {
-            const href = lien.getAttribute('href');
-            if (href && href !== '#') {
-                const element = document.querySelector(href);
-                if (element) {
-                    e.preventDefault();
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        });
-    }
-});
 
 /* --- 7. Gestion de la Modale Projet --- */
 
@@ -322,8 +264,8 @@ const donneesProjectes = {
     }
 };
 
-const modale = document.querySelector('#fenetre-portfolio');
-const btnsFermer = document.querySelectorAll('.bouton-fermer');
+const modale = document.querySelector('#modale-projet');
+const btnsFermer = document.querySelectorAll('.btn-fermer-modale');
 
 function attachModalEvents() {
     document.querySelectorAll('.btn-modal-projet').forEach(btn => {
@@ -334,7 +276,7 @@ function attachModalEvents() {
 
 function handleModalClick(e) {
     e.preventDefault();
-    const carte = e.target.closest('.carte-portfolio');
+    const carte = e.target.closest('.carte-projet');
     const projetId = carte.getAttribute('data-projet-id');
     ouvrirModale(projetId);
 }
@@ -412,4 +354,3 @@ const observateur = new IntersectionObserver((entrees) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll(".cache").forEach((el) => observateur.observe(el));
-

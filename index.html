@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <nav class="barre-navigation">
+    <nav class="barre-nav">
         <div class="logo">Kilyan<span>.Dev</span></div>
         <ul class="liens-nav">
             <li><a href="#accueil" data-i18n="nav_accueil">Accueil</a></li>
@@ -18,33 +18,23 @@
             <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="boutons-nav">
-            <button id="bouton-langue" class="bouton-secondaire">EN</button>
-            <div class="menu-cv-dropdown">
-                <button id="bouton-telecharger-cv" class="bouton-principal" data-i18n="btn_telecharger">Télécharger CV</button>
-                <div class="menu-deroulant-cv">
-                    <a href="CV_FR.pdf" download="CV_Kilyan_Gibert_FR.pdf" class="option-telecharger">
-                        <i class="fas fa-file-pdf"></i> Français
-                    </a>
-                    <a href="CV_EN.pdf" download="CV_Kilyan_Gibert_EN.pdf" class="option-telecharger">
-                        <i class="fas fa-file-pdf"></i> English
-                    </a>
-                </div>
-            </div>
+            <button id="bouton-langue" class="btn-secondaire">EN</button>
+            <a href="CV.pdf" download="CV_Kilyan_Gibert.pdf" class="btn-primaire" data-i18n="btn_telecharger">Télécharger CV</a>
         </div>
-        <div class="menu-burger">
+        <div class="hamburger">
             <i class="fas fa-bars"></i>
         </div>
     </nav>
 
-    <header id="accueil" class="section-hero">
-        <div class="animation-fond-hero">
+    <header id="accueil" class="banniere">
+        <div class="animation-fond">
             <span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span>
         </div>
 
-        <div class="conteneur-hero">
+        <div class="conteneur-banniere">
             <div class="texte-banniere cache">
-                <span class="badge-portfolio">Portfolio 2025</span>
+                <span class="badge">Portfolio 2025</span>
                 <h2 data-i18n="banniere_salutation">Bonjour, je suis</h2>
                 <h1>Kilyan Gibert</h1>
                 <h3 class="texte-degrade" data-i18n="banniere_role">Étudiant en Informatique</h3>
@@ -56,14 +46,14 @@
                 </div>
 
                 <div class="boutons-action">
-                    <a href="#projets" class="bouton-principal" data-i18n="btn_projets">Voir mes projets</a>
-                    <a href="#contact" class="bouton-secondaire" data-i18n="btn_contact">Me contacter</a>
+                    <a href="#projets" class="btn-primaire" data-i18n="btn_projets">Voir mes projets</a>
+                    <a href="#contact" class="btn-secondaire" data-i18n="btn_contact">Me contacter</a>
                 </div>
             </div>
             
             <div class="visuel-banniere cache">
-                <div class="cadre-photo-profil">
-                    <img src="photo.jpg" alt="Kilyan Gibert" class="image-profil" onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#1e293b'">
+                <div class="cadre-profil">
+                    <img src="photo.jpg" alt="Kilyan Gibert" class="img-profil" onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#1e293b'">
                 </div>
             </div>
         </div>
@@ -72,18 +62,18 @@
     <section id="cv" class="section">
         <h2 class="titre-section" data-i18n="nav_cv">Mon CV</h2>
         
-        <div class="grille-curriculum">
+        <div class="grille-cv">
             <div class="colonne-principale">
                 <div class="bloc-cv cache">
                     <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="cv_formation">Formation</span></h3>
-                    <div class="boite-contenu-cv">
-                        <div class="element-chronologique">
+                    <div class="boite-contenu">
+                        <div class="element-chrono">
                             <span class="date">2024 - Présent</span>
                             <h4 data-i18n="titre_but">BUT Informatique (2ème année)</h4>
                             <p class="lieu">Université Savoie Mont Blanc / IUT Annecy</p>
                             <p data-i18n="desc_but">Bachelor Universitaire de Technologie en informatique (En cours).</p>
                         </div>
-                        <div class="element-chronologique" style="border-bottom: none;">
+                        <div class="element-chrono" style="border-bottom: none;">
                             <span class="date">2020 - 2024</span>
                             <h4 data-i18n="titre_bac">Baccalauréat Général</h4>
                             <p class="lieu">Lycée de la Plaine de l'Ain, Ambérieu-en-Bugey</p>
@@ -94,30 +84,30 @@
 
                 <div class="bloc-cv cache">
                     <h3><i class="fas fa-briefcase"></i> <span data-i18n="cv_experience">Expérience</span></h3>
-                    <div class="boite-contenu-cv">
-                        <div class="element-chronologique">
+                    <div class="boite-contenu">
+                        <div class="element-chrono">
                             <span class="date">2025 - 2026</span>
                             <h4 data-i18n="titre_projet_univ">Projet Universitaire en Équipe</h4>
                             <p class="lieu">USMB Annecy</p>
-                            <ul class="details-emploi">
+                            <ul class="details-job">
                                 <li data-i18n="desc_projet_1">Utilisation de la méthode Agile et diagrammes UML.</li>
                                 <li data-i18n="desc_projet_2">Création d'un site PHP avec Laravel et conception de la base SQL.</li>
                             </ul>
                         </div>
-                        <div class="element-chronologique">
+                        <div class="element-chrono">
                             <span class="date">Juillet - Août 2025</span>
                             <h4 data-i18n="titre_job_netto">Employé de Rayon</h4>
                             <p class="lieu">Netto, Ambérieu-en-Bugey</p>
-                            <ul class="details-emploi">
+                            <ul class="details-job">
                                 <li data-i18n="desc_job_netto_1">Supervision et organisation des rayons avec le responsable.</li>
                                 <li data-i18n="desc_job_netto_2">Maintien de l'attractivité et respect des standards.</li>
                             </ul>
                         </div>
-                         <div class="element-chronologique" style="border-bottom: none;">
+                         <div class="element-chrono" style="border-bottom: none;">
                             <span class="date">2022 - 2023</span>
                             <h4 data-i18n="titre_job_basket">Assistant Coach Basket</h4>
                             <p class="lieu">Ambérieu-en-Bugey</p>
-                            <ul class="details-emploi">
+                            <ul class="details-job">
                                 <li data-i18n="desc_job_basket_1">Entraînement d'une équipe de jeunes.</li>
                                 <li data-i18n="desc_job_basket_2">Préparation des sessions (technique, tactique, physique).</li>
                             </ul>
@@ -127,9 +117,9 @@
             </div>
 
             <div class="colonne-laterale cache">
-                <div class="bloc-curriculum">
+                <div class="bloc-cv">
                     <h3 data-i18n="cv_competences">Compétences</h3>
-                    <div class="boite-cote">
+                    <div class="boite-laterale">
                         <div class="categorie-skill">
                             <strong data-i18n="cat_technique">Technique</strong>
                             <div class="skill-item">
@@ -195,9 +185,9 @@
                     </div>
                 </div>
 
-                <div class="bloc-curriculum">
+                <div class="bloc-cv">
                     <h3 data-i18n="cv_interets">Intérêts</h3>
-                    <div class="boite-cote">
+                    <div class="boite-laterale">
                         <ul class="liste-hobbies">
                             <li><i class="fas fa-basketball-ball"></i> <span data-i18n="hobby_basket">Basket (en club)</span></li>
                             <li><i class="fas fa-gamepad"></i> <span data-i18n="hobby_jeux">Jeux vidéo (FPS, MOBA...)</span></li>
@@ -205,9 +195,9 @@
                     </div>
                 </div>
 
-                <div class="bloc-curriculum">
+                <div class="bloc-cv">
                     <h3 data-i18n="cv_langues">Langues</h3>
-                    <div class="boite-cote">
+                    <div class="boite-laterale">
                         <div class="skill-item">
                             <div class="skill-header">
                                 <span data-i18n="lang_fr">Français :</span>
@@ -235,12 +225,12 @@
         
         <div class="conteneur-carrousel">
             <div class="carte-projet active" data-projet-id="1">
-                <div class="contenu-carte-portfolio">
+                <div class="contenu-carte">
                     <div class="info-projet">
                         <h3>SAE Application Nicolas</h3>
                         <p data-i18n="projet_1_desc">Application desktop WPF pour la gestion d'une entreprise de vin.</p>
                     </div>
-                    <div class="pile-technologies">
+                    <div class="pile-techno">
                         <span>WPF</span><span>C#</span><span>PostgreSQL</span>
                     </div>
                     <a href="#" class="lien-bouton btn-modal-projet">
@@ -250,12 +240,12 @@
             </div>
 
             <div class="carte-projet suivante" data-projet-id="2">
-                <div class="contenu-carte-portfolio">
+                <div class="contenu-carte">
                     <div class="info-projet">
                         <h3 data-i18n="projet_2_titre">Portfolio Personnel</h3>
                         <p data-i18n="projet_2_desc">Site web responsive présentant mon parcours et mes compétences.</p>
                     </div>
-                    <div class="pile-technologies">
+                    <div class="pile-techno">
                         <span>HTML</span><span>CSS</span><span>JS</span>
                     </div>
                     <a href="#" class="lien-bouton btn-modal-projet">
@@ -265,12 +255,12 @@
             </div>
 
             <div class="carte-projet precedente" data-projet-id="3">
-                <div class="contenu-carte-portfolio">
+                <div class="contenu-carte">
                     <div class="info-projet">
                         <h3 data-i18n="projet_3_titre">SAE Site Web Club Med</h3>
                         <p data-i18n="projet_3_desc">Reproduction complète du site du Club Med avec Laravel.</p>
                     </div>
-                    <div class="pile-technologies">
+                    <div class="pile-techno">
                         <span>Laravel</span><span>PostgreSQL</span><span>Blade</span>
                     </div>
                     <a href="#" class="lien-bouton btn-modal-projet">
@@ -279,32 +269,32 @@
                 </div>
             </div>
 
-            <div class="navigation-carousel">
-                <button id="btn-prec" class="bouton-navigation"><i class="fas fa-chevron-left"></i></button>
-                <button id="btn-suiv" class="bouton-navigation"><i class="fas fa-chevron-right"></i></button>
+            <div class="nav-carrousel">
+                <button id="btn-prec" class="btn-nav"><i class="fas fa-chevron-left"></i></button>
+                <button id="btn-suiv" class="btn-nav"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
 
-        <div id="fenetre-portfolio" class="fenetre-modale">
-            <div class="contenu-fenetre">
-                <button class="bouton-fermer"><i class="fas fa-times"></i></button>
+        <div id="modale-projet" class="modale">
+            <div class="contenu-modale">
+                <button class="btn-fermer-modale"><i class="fas fa-times"></i></button>
                 
-                <div class="entete-fenetre">
+                <div class="modale-entete">
                     <h2 id="modal-titre-projet">Titre du Projet</h2>
                     <a id="modal-lien-github" href="#" target="_blank" class="btn-primaire btn-github">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
 
-                <div class="galerie-photo">
-                    <div class="conteneur-photo">
+                <div class="galerie-images">
+                    <div class="conteneur-image">
                         <img id="modal-image-principale" src="image.jpg" alt="Image du projet" onerror="this.style.display='none';">
                     </div>
-                    <div class="vignettes-photo">
+                    <div class="miniatures">
                         </div>
                 </div>
 
-                <div class="corps-fenetre">
+                <div class="modale-corps">
                     <div class="section-description">
                         <h3 data-i18n="modal_desc">Description</h3> <p id="modal-description">Description du projet...</p>
                     </div>
@@ -325,25 +315,25 @@
 
     <section id="contact" class="section section-contact">
         <h2 class="titre-section" data-i18n="nav_contact">Contactez-moi</h2>
-        <div class="conteneur-contact">
+        <div class="enveloppe-contact">
             <div class="carte-contact carte-info cache">
                 <h3>Mes Coordonnées</h3>
-                <div class="ligne-information">
-                    <div class="conteneur-icone"><i class="fas fa-phone"></i></div>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fas fa-phone"></i></div>
                     <div>
                         <span data-i18n="label_tel">Téléphone</span>
                         <p>+33 6 34 53 27 31</p>
                     </div>
                 </div>
-                <div class="ligne-information">
-                    <div class="conteneur-icone"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fas fa-map-marker-alt"></i></div>
                     <div>
                         <span data-i18n="label_adresse">Adresse</span>
                         <p>Seynod, 74600, France</p>
                     </div>
                 </div>
-                <div class="ligne-information">
-                    <div class="conteneur-icone"><i class="fab fa-linkedin"></i></div>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fab fa-linkedin"></i></div>
                     <div>
                         <a id="btn-linkedin" class="btn-lien" href="https://www.linkedin.com/in/kilyan-gibert-17777633b" target="_blank" rel="noopener noreferrer">
                             <span data-i18n="label_linkedin">LinkedIn</span>
@@ -351,8 +341,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="ligne-information">
-                    <div class="conteneur-icone"><i class="fab fa-github"></i></div>
+                <div class="ligne-info">
+                    <div class="boite-icone"><i class="fab fa-github"></i></div>
                     <div>
                         <a id="btn-github" class="btn-lien" href="https://github.com/abriiiic" target="_blank" rel="noopener noreferrer">
                             <span data-i18n="label_github">GitHub</span>
@@ -363,19 +353,19 @@
             </div>
             <div class="carte-contact carte-formulaire cache">
                 <form class="formulaire-contact" action="https://formspree.io/f/xpwbyrnk" method="POST">
-                    <div class="groupe-formulaire">
+                    <div class="groupe-input">
                         <label>Nom / Name</label>
                         <input type="text" name="nom" required>
                     </div>
-                    <div class="groupe-formulaire">
+                    <div class="groupe-input">
                         <label>Email</label>
                         <input type="email" name="email" required>
                     </div>
-                    <div class="groupe-formulaire">
+                    <div class="groupe-input">
                         <label>Message</label>
                         <textarea rows="5" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="bouton-principal" data-i18n="btn_envoyer">Envoyer</button>
+                    <button type="submit" class="btn-primaire" data-i18n="btn_envoyer">Envoyer</button>
                 </form>
             </div>
         </div>
@@ -388,7 +378,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
