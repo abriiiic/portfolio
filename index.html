@@ -18,6 +18,13 @@
             <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="boutons-nav">
+            <div class="menu-cv">
+                <button id="btn-telecharger-cv">Télécharger CV</button>
+                <div class="dropdown-cv">
+                    <a href="CV_FR.pdf" download="CV_Kilyan_Gibert_FR.pdf" class="option-cv">CV Français</a>
+                    <a href="CV_EN.pdf" download="CV_Kilyan_Gibert_EN.pdf" class="option-cv">CV Anglais</a>
+                </div>
+            </div>
             <button id="bouton-langue" class="btn-secondaire">EN</button>
             <a href="CV_EN.pdf" download="CV_Kilyan_Gibert.pdf" class="btn-primaire" data-i18n="btn_telecharger">Télécharger CV</a>
         </div>
@@ -185,33 +192,31 @@
                     </div>
                 </div>
 
-                <div class="bloc-cv">
-                    <h3 data-i18n="cv_interets">Intérêts</h3>
-                    <div class="boite-laterale">
-                        <ul class="liste-hobbies">
-                            <li><i class="fas fa-basketball-ball"></i> <span data-i18n="hobby_basket">Basket (en club)</span></li>
-                            <li><i class="fas fa-gamepad"></i> <span data-i18n="hobby_jeux">Jeux vidéo (FPS, MOBA...)</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bloc-cv">
-                    <h3 data-i18n="cv_langues">Langues</h3>
-                    <div class="boite-laterale">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span data-i18n="lang_fr">Français :</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 100%;"></div>
-                            </div>
+                <div class="container-interets-langues">
+                    <div class="bloc-cv">
+                        <h3 data-i18n="cv_interets">Intérêts</h3>
+                        <div class="boite-laterale">
+                            <ul class="liste-hobbies">
+                                <li><i class="fas fa-basketball-ball"></i> <span data-i18n="hobby_basket">Basket (en club)</span></li>
+                                <li><i class="fas fa-gamepad"></i> <span data-i18n="hobby_jeux">Jeux vidéo (FPS, MOBA...)</span></li>
+                            </ul>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span data-i18n="lang_en">Anglais :</span>
+                    </div>
+
+                    <div class="bloc-cv">
+                        <h3 data-i18n="cv_langues">Langues</h3>
+                        <div class="boite-laterale">
+                            <div class="langue-item">
+                                <div class="langue-header">
+                                    <span data-i18n="lang_fr">Français :</span>
+                                    <span class="niveau-langue" data-i18n="niveau_fr">Langue maternelle</span>
+                                </div>
                             </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%;"></div>
+                            <div class="langue-item">
+                                <div class="langue-header">
+                                    <span data-i18n="lang_en">Anglais :</span>
+                                    <span class="niveau-langue" data-i18n="niveau_en">B2 (Niveau supérieur)</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -222,6 +227,22 @@
 
     <section id="projets" class="section">
         <h2 class="titre-section" data-i18n="nav_projets">Mes Projets</h2>
+        
+        <!-- Barre de recherche et filtres -->
+        <div class="barre-recherche-filtres">
+            <div class="conteneur-recherche">
+                <input type="text" id="recherche-projets" class="input-recherche" placeholder="Rechercher un projet..." data-i18n-placeholder="search_projects">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <div class="conteneur-filtres">
+                <button class="btn-filtre active" data-filtre="tous">Tous</button>
+                <button class="btn-filtre" data-filtre="C#">C#</button>
+                <button class="btn-filtre" data-filtre="PostgreSQL">PostgreSQL</button>
+                <button class="btn-filtre" data-filtre="JavaScript">JavaScript</button>
+                <button class="btn-filtre" data-filtre="PHP">PHP</button>
+            </div>
+        </div>
         
         <div class="conteneur-carrousel">
             <div class="carte-projet active" data-projet-id="1">

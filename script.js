@@ -1,3 +1,66 @@
+/* --- 1. Menu Déroulant CV --- */
+const btnTelechargerCV = document.querySelector('#btn-telecharger-cv');
+const dropdownCV = document.querySelector('.dropdown-cv');
+
+if (btnTelechargerCV && dropdownCV) {
+    btnTelechargerCV.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownCV.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.option-cv').forEach(option => {
+        option.addEventListener('click', () => {
+            dropdownCV.classList.remove('active');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.menu-cv')) {
+            dropdownCV.classList.remove('active');
+        }
+    });
+}
+
+/* --- 1.5 Menu Déroulant Filtres --- */
+const btnMenuFiltres = document.querySelector('#btn-menu-filtres');
+const dropdownFiltres = document.querySelector('.dropdown-filtres');
+const optionsFiltres = document.querySelectorAll('.filtre-option');
+
+if (btnMenuFiltres && dropdownFiltres) {
+    btnMenuFiltres.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownFiltres.classList.toggle('active');
+    });
+
+    optionsFiltres.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Retirer la classe active de tous les options
+            optionsFiltres.forEach(opt => opt.classList.remove('active'));
+            
+            // Ajouter la classe active à l'option cliquée
+            option.classList.add('active');
+            
+            // Mettre à jour le filtre actif
+            filtreActif = option.getAttribute('data-filtre');
+            
+            // Appliquer les filtres
+            appliqueFiltresEtRecherche();
+            
+            // Fermer le menu après la sélection
+            dropdownFiltres.classList.remove('active');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.menu-filtres')) {
+            dropdownFiltres.classList.remove('active');
+        }
+    });
+}
+
 /* --- 2. Dictionnaire de Traduction --- */
 const traductions = {
     fr: {
@@ -55,7 +118,6 @@ const traductions = {
         label_tel: "Téléphone",
         label_adresse: "Adresse",
         btn_envoyer: "Envoyer",
-        // NOUVELLES TRADUCTIONS POUR LA MODALE
         modal_desc: "Description",
         modal_tech: "Langages utilisés",
         modal_contrib: "Contributeurs"
@@ -115,29 +177,23 @@ const traductions = {
         label_tel: "Phone",
         label_adresse: "Address",
         btn_envoyer: "Send Message",
-        // NEW MODAL TRANSLATIONS
         modal_desc: "Description",
         modal_tech: "Technologies used",
         modal_contrib: "Contributors"
     }
 };
 
-/* --- 3. Logique de Changement de Langue --- */
+/* --- 3. Changement de Langue --- */
 let langueActuelle = "fr";
 const boutonLangue = document.querySelector("#bouton-langue");
 
 if (boutonLangue) {
     boutonLangue.addEventListener("click", () => {
-        // Basculer la langue
         langueActuelle = langueActuelle === "fr" ? "en" : "fr";
-        
-        // Mettre à jour le texte du bouton
         boutonLangue.textContent = langueActuelle === "fr" ? "EN" : "FR";
         
-        // Appliquer les traductions
         document.querySelectorAll("[data-i18n]").forEach(element => {
             const cle = element.getAttribute("data-i18n");
-            // Vérifier si la traduction existe pour éviter les erreurs
             if (traductions[langueActuelle][cle]) {
                 element.textContent = traductions[langueActuelle][cle];
             }
@@ -145,17 +201,14 @@ if (boutonLangue) {
     });
 }
 
-/* --- 4. Menu Mobile (Amélioré) --- */
+/* --- 4. Menu Mobile --- */
 const hamburger = document.querySelector(".hamburger");
 const navBar = document.querySelector(".barre-nav");
 const liensMenu = document.querySelectorAll(".liens-nav a"); 
 
 if (hamburger && navBar) {
-    // Ouvrir / Fermer le menu
     hamburger.addEventListener("click", () => {
         navBar.classList.toggle("active");
-        
-        // Change l'icône du hamburger
         const icon = hamburger.querySelector('i');
         if(navBar.classList.contains('active')) {
             icon.classList.remove('fa-bars');
@@ -166,7 +219,6 @@ if (hamburger && navBar) {
         }
     });
 
-    // Fermer le menu quand on clique sur un lien
     liensMenu.forEach(lien => {
         lien.addEventListener("click", () => {
             navBar.classList.remove("active");
@@ -179,7 +231,7 @@ if (hamburger && navBar) {
     });
 }
 
-/* --- 5. Logique du Carrousel --- */
+/* --- 5. Carrousel --- */
 const cartes = document.querySelectorAll('.carte-projet');
 const btnPrec = document.querySelector('#btn-prec');
 const btnSuiv = document.querySelector('#btn-suiv');
@@ -213,12 +265,172 @@ if (btnSuiv && btnPrec) {
     });
 }
 
-// Initialiser le carrousel au chargement
 majCarrousel();
 
-/* --- 7. Gestion de la Modale Projet --- */
+/* --- 5.5 Recherche et Filtres --- */
+const rechercheInput = document.querySelector('#recherche-projets');
+const btnsFiltres = document.querySelectorAll('.btn-filtre');
+let filtreActif = 'tous';
+let termeRecherche = '';
 
-// NOUVELLE STRUCTURE DE DONNÉES (FR & EN)
+// Données des projets pour la recherche
+const projetsDonnees = {
+    1: {
+        titre: 'SAE Application Nicolas',
+        description: 'Application desktop WPF pour la gestion d\'une entreprise de vin.',
+        technologies: ['WPF', 'C#', 'PostgreSQL']
+    },
+    2: {
+        titre: 'Portfolio Personnel',
+        description: 'Site web responsive présentant mon parcours et mes compétences.',
+        technologies: ['HTML', 'CSS', 'JavaScript', 'JS']
+    },
+    3: {
+        titre: 'SAE Site Web Club Med',
+        description: 'Reproduction complète du site du Club Med avec Laravel.',
+        technologies: ['Laravel', 'PostgreSQL', 'Blade', 'PHP']
+    }
+};
+
+function appliqueFiltresEtRecherche() {
+    let projetsTrouves = 0;
+    
+    cartes.forEach(carte => {
+        const projetId = carte.getAttribute('data-projet-id');
+        const donnees = projetsDonnees[projetId];
+        
+        // Vérifier la recherche
+        const texteRecherche = termeRecherche.toLowerCase();
+        const titreCorrespond = donnees.titre.toLowerCase().includes(texteRecherche);
+        const descriptionCorrespond = donnees.description.toLowerCase().includes(texteRecherche);
+        const rechercheOk = texteRecherche === '' || titreCorrespond || descriptionCorrespond;
+        
+        // Vérifier le filtre
+        const filtreOk = filtreActif === 'tous' || donnees.technologies.includes(filtreActif);
+        
+        // Afficher ou masquer la carte
+        if (rechercheOk && filtreOk) {
+            carte.classList.remove('hidden');
+            projetsTrouves++;
+        } else {
+            carte.classList.add('hidden');
+        }
+    });
+    
+    // Réinitialiser l'index du carrousel si nécessaire
+    if (projetsTrouves > 0) {
+        indexActuel = 0;
+        majCarrouselFiltre();
+    }
+}
+
+function majCarrouselFiltre() {
+    const cartesVisibles = Array.from(cartes).filter(c => !c.classList.contains('hidden'));
+    
+    if (cartesVisibles.length === 0) return;
+    
+    cartes.forEach(carte => {
+        carte.className = 'carte-projet';
+        if (carte.classList.contains('hidden')) return;
+        
+        const indexVis = cartesVisibles.indexOf(carte);
+        
+        if (indexVis === indexActuel) {
+            carte.classList.add('active');
+        } else if (indexVis === (indexActuel + 1) % cartesVisibles.length) {
+            carte.classList.add('suivante');
+        } else if (indexVis === (indexActuel - 1 + cartesVisibles.length) % cartesVisibles.length) {
+            carte.classList.add('precedente');
+        }
+    });
+}
+
+// Événement de recherche
+if (rechercheInput) {
+    rechercheInput.addEventListener('input', (e) => {
+        termeRecherche = e.target.value;
+        appliqueFiltresEtRecherche();
+    });
+}
+
+// Événements des filtres
+btnsFiltres.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Retirer la classe active de tous les boutons
+        btnsFiltres.forEach(b => b.classList.remove('active'));
+        
+        // Ajouter la classe active au bouton cliqué
+        btn.classList.add('active');
+        
+        // Mettre à jour le filtre actif
+        filtreActif = btn.getAttribute('data-filtre');
+        
+        // Appliquer les filtres
+        appliqueFiltresEtRecherche();
+    });
+});
+
+// Mettre à jour les boutons du carrousel pour les cartes filtrées
+if (btnSuiv && btnPrec) {
+    btnSuiv.addEventListener('click', () => {
+        const cartesVisibles = Array.from(cartes).filter(c => !c.classList.contains('hidden'));
+        if (cartesVisibles.length > 0) {
+            indexActuel = (indexActuel + 1) % cartesVisibles.length;
+            majCarrouselFiltre();
+        }
+    });
+
+    btnPrec.addEventListener('click', () => {
+        const cartesVisibles = Array.from(cartes).filter(c => !c.classList.contains('hidden'));
+        if (cartesVisibles.length > 0) {
+            indexActuel = (indexActuel - 1 + cartesVisibles.length) % cartesVisibles.length;
+            majCarrouselFiltre();
+        }
+    });
+}
+
+/* --- 6. Scroll Fluide --- */
+document.addEventListener('click', function(e) {
+    const lien = e.target.closest('a[href^="#"]');
+    if (!lien) return;
+    
+    const href = lien.getAttribute('href');
+    if (href === '#' || href === '#modale-projet') return;
+    
+    e.preventDefault();
+    
+    const element = document.querySelector(href);
+    if (!element) return;
+    
+    const navBar = document.querySelector('.barre-nav');
+    const navHeight = navBar ? navBar.offsetHeight : 0;
+    const targetPosition = element.offsetTop - navHeight;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 1200;
+    let start = null;
+    
+    function ease(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+    
+    function animation(currentTime) {
+        if (start === null) start = currentTime;
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = ease(progress);
+        
+        window.scrollTo(0, startPosition + distance * easeProgress);
+        
+        if (progress < 1) {
+            requestAnimationFrame(animation);
+        }
+    }
+    
+    requestAnimationFrame(animation);
+});
+
+/* --- 7. Modale Projet --- */
 const donneesProjectes = {
     1: {
         nom: {
@@ -267,81 +479,59 @@ const donneesProjectes = {
 const modale = document.querySelector('#modale-projet');
 const btnsFermer = document.querySelectorAll('.btn-fermer-modale');
 
-function attachModalEvents() {
-    document.querySelectorAll('.btn-modal-projet').forEach(btn => {
-        btn.removeEventListener('click', handleModalClick); 
-        btn.addEventListener('click', handleModalClick);
+document.querySelectorAll('.btn-modal-projet').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const carte = e.target.closest('.carte-projet');
+        const projetId = carte.getAttribute('data-projet-id');
+        const donnees = donneesProjectes[projetId];
+        
+        if (!donnees) return;
+        
+        document.querySelector('#modal-titre-projet').textContent = donnees.nom[langueActuelle];
+        document.querySelector('#modal-description').textContent = donnees.description[langueActuelle];
+        document.querySelector('#modal-lien-github').href = donnees.github;
+        
+        const modalTechs = document.querySelector('#modal-technologies');
+        modalTechs.innerHTML = '';
+        donnees.technologies.forEach(tech => {
+            const tag = document.createElement('span');
+            tag.className = 'tag-tech';
+            tag.textContent = tech;
+            modalTechs.appendChild(tag);
+        });
+        
+        const modalContrib = document.querySelector('#modal-contributeurs');
+        modalContrib.innerHTML = '';
+        donnees.contributeurs.forEach(contrib => {
+            const li = document.createElement('li');
+            li.textContent = contrib;
+            modalContrib.appendChild(li);
+        });
+        
+        if (donnees.images && donnees.images.length > 0) {
+            document.querySelector('#modal-image-principale').src = donnees.images[0];
+        }
+        
+        document.body.classList.add('no-scroll');
+        modale.classList.add('active');
     });
-}
+});
 
-function handleModalClick(e) {
-    e.preventDefault();
-    const carte = e.target.closest('.carte-projet');
-    const projetId = carte.getAttribute('data-projet-id');
-    ouvrirModale(projetId);
-}
-
-// Appeler cette fonction au chargement
-attachModalEvents();
-
-// Fermer la modale
 btnsFermer.forEach(btn => {
-    btn.addEventListener('click', fermerModale);
+    btn.addEventListener('click', () => {
+        modale.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    });
 });
 
 if (modale) {
     modale.addEventListener('click', (e) => {
         if (e.target === modale) {
-            fermerModale();
+            modale.classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
     });
-}
-
-function ouvrirModale(projetId) {
-    const donnees = donneesProjectes[projetId];
-    if (!donnees) return;
-
-    // SÉLECTION DE LA LANGUE (fr ou en)
-    document.querySelector('#modal-titre-projet').textContent = donnees.nom[langueActuelle];
-    document.querySelector('#modal-description').textContent = donnees.description[langueActuelle];
-    document.querySelector('#modal-lien-github').href = donnees.github;
-
-    // Technologies
-    const modalTechs = document.querySelector('#modal-technologies');
-    modalTechs.innerHTML = '';
-    donnees.technologies.forEach(tech => {
-        const tag = document.createElement('span');
-        tag.className = 'tag-tech';
-        tag.textContent = tech;
-        modalTechs.appendChild(tag);
-    });
-
-    // Contributeurs (Alignement géré par CSS flex)
-    const modalContrib = document.querySelector('#modal-contributeurs');
-    modalContrib.innerHTML = '';
-    donnees.contributeurs.forEach(contrib => {
-        const li = document.createElement('li');
-        li.textContent = contrib;
-        modalContrib.appendChild(li);
-    });
-
-    // Images
-    if (donnees.images && donnees.images.length > 0) {
-        document.querySelector('#modal-image-principale').src = donnees.images[0];
-    }
-
-    // Désactiver le scroll du body
-    document.body.classList.add('no-scroll');
-    
-    modale.classList.add('active');
-}
-
-function fermerModale() {
-    if (modale) {
-        modale.classList.remove('active');
-        // Réactiver le scroll du body
-        document.body.classList.remove('no-scroll');
-    }
 }
 
 /* --- 8. Animation au Scroll --- */
