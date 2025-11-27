@@ -382,7 +382,15 @@ img {
     justify-content: center;
     align-items: center;
     padding: clamp(2rem, 4vw, 4rem) var(--pad);
+    cursor: grab; 
+    user-select: none; 
+    touch-action: pan-y; 
 }
+
+.conteneur-carrousel:active {
+    cursor: grabbing; 
+}
+
 .carte-projet {
     position: absolute;
     width: clamp(20rem, 22vw, 32rem);

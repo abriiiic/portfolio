@@ -1,4 +1,4 @@
-/*  Menu Déroulant Téléchargement CV */
+/* MENU DÉROULANT CV */
 const boutonTelechargerCV = document.querySelector('#btn-telecharger-cv');
 const menuDeroulantCV = document.querySelector('.dropdown-cv');
 
@@ -21,7 +21,7 @@ if (boutonTelechargerCV && menuDeroulantCV) {
     });
 }
 
-/* Dictionnaire de Traduction */
+/* DICTIONNAIRE DE TRADUCTION */
 const traductions = {
     fr: {
         nav_accueil: "Accueil",
@@ -163,7 +163,7 @@ const traductions = {
     }
 };
 
-/* Changement de Langue */
+/* CHANGEMENT DE LANGUE */
 let langueActuelle = "fr";
 const boutonLangue = document.querySelector("#bouton-langue");
 
@@ -172,7 +172,6 @@ if (boutonLangue) {
         langueActuelle = langueActuelle === "fr" ? "en" : "fr";
         boutonLangue.textContent = langueActuelle === "fr" ? "EN" : "FR";
         
-        // Traduction des textes génériques
         document.querySelectorAll("[data-i18n]").forEach(element => {
             const cle = element.getAttribute("data-i18n");
             if (traductions[langueActuelle][cle]) {
@@ -180,21 +179,16 @@ if (boutonLangue) {
             }
         });
 
-        // Traduction des placeholders
         document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
             const cle = element.getAttribute("data-i18n-placeholder");
             if (traductions[langueActuelle][cle]) {
                 element.placeholder = traductions[langueActuelle][cle];
             }
         });
-
-        const modale = document.querySelector('#modale-projet');
-        if (modale.classList.contains('active')) {
-        }
     });
 }
 
-/* Menu Mobile */
+/* MENU MOBILE */
 const hamburger = document.querySelector(".hamburger");
 const barreNav = document.querySelector(".barre-nav");
 const liensMenu = document.querySelectorAll(".liens-nav a"); 
@@ -224,7 +218,7 @@ if (hamburger && barreNav) {
     });
 }
 
-/* Données des Projets */
+/* DONNÉES DES PROJETS */
 const catalogueProjets = {
     1: {
         titre: { fr: "SAE Application Nicolas", en: "SAE Nicolas Application" },
@@ -273,7 +267,7 @@ const catalogueProjets = {
     }
 };
 
-/* Carrousel et Filtres*/
+/* CARROUSEL, FILTRES ET DRAG & DROP */
 const conteneurCarrousel = document.querySelector('.conteneur-carrousel');
 const toutesLesCartes = document.querySelectorAll('.carte-projet');
 const boutonPrecedent = document.querySelector('#btn-prec');
@@ -284,6 +278,10 @@ const boutonsFiltres = document.querySelectorAll('.btn-filtre');
 let indexActuel = 0;
 let filtreActif = 'tous';
 let termeRecherche = '';
+
+let estEnTrainDeGlisser = false;
+let positionDepartX = 0;
+let differenceX = 0;
 
 function mettreAJourCarrousel() {
     const cartesVisibles = Array.from(toutesLesCartes).filter(carte => !carte.classList.contains('hidden'));
@@ -317,7 +315,7 @@ function appliquerFiltres() {
         if (!donnees) return;
 
         const texte = termeRecherche.toLowerCase();
-        // Recherche dans le titre et la description (en français pour simplifier la logique de recherche ici)
+        
         const matchTexte = texte === '' || 
                            donnees.titre.fr.toLowerCase().includes(texte) || 
                            donnees.description.fr.toLowerCase().includes(texte);
@@ -337,22 +335,80 @@ function appliquerFiltres() {
     mettreAJourCarrousel();
 }
 
+function allerAuSuivant() {
+    const cartesVisibles = document.querySelectorAll('.carte-projet:not(.hidden)');
+    if (cartesVisibles.length > 0) {
+        indexActuel = (indexActuel + 1) % cartesVisibles.length;
+        mettreAJourCarrousel();
+    }
+}
+
+function allerAuPrecedent() {
+    const cartesVisibles = document.querySelectorAll('.carte-projet:not(.hidden)');
+    if (cartesVisibles.length > 0) {
+        indexActuel = (indexActuel - 1 + cartesVisibles.length) % cartesVisibles.length;
+        mettreAJourCarrousel();
+    }
+}
+
 if (boutonSuivant && boutonPrecedent) {
-    boutonSuivant.addEventListener('click', () => {
-        const cartesVisibles = document.querySelectorAll('.carte-projet:not(.hidden)');
-        if (cartesVisibles.length > 0) {
-            indexActuel = (indexActuel + 1) % cartesVisibles.length;
-            mettreAJourCarrousel();
-        }
+    boutonSuivant.addEventListener('click', allerAuSuivant);
+    boutonPrecedent.addEventListener('click', allerAuPrecedent);
+}
+
+if (conteneurCarrousel) {
+    conteneurCarrousel.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button') || e.target.closest('a')) return;
+        estEnTrainDeGlisser = true;
+        positionDepartX = e.pageX;
+        conteneurCarrousel.style.cursor = 'grabbing';
     });
 
-    boutonPrecedent.addEventListener('click', () => {
-        const cartesVisibles = document.querySelectorAll('.carte-projet:not(.hidden)');
-        if (cartesVisibles.length > 0) {
-            indexActuel = (indexActuel - 1 + cartesVisibles.length) % cartesVisibles.length;
-            mettreAJourCarrousel();
+    conteneurCarrousel.addEventListener('touchstart', (e) => {
+        positionDepartX = e.touches[0].clientX;
+    });
+
+    conteneurCarrousel.addEventListener('mousemove', (e) => {
+        if (!estEnTrainDeGlisser) return;
+        e.preventDefault();
+        differenceX = e.pageX - positionDepartX;
+    });
+
+    conteneurCarrousel.addEventListener('touchmove', (e) => {
+        differenceX = e.touches[0].clientX - positionDepartX;
+    });
+
+    conteneurCarrousel.addEventListener('mouseup', () => {
+        finDuGlissement();
+    });
+
+    conteneurCarrousel.addEventListener('touchend', () => {
+        finDuGlissement();
+    });
+
+    conteneurCarrousel.addEventListener('mouseleave', () => {
+        if (estEnTrainDeGlisser) {
+            estEnTrainDeGlisser = false;
+            conteneurCarrousel.style.cursor = 'grab';
         }
     });
+}
+
+function finDuGlissement() {
+    if (!estEnTrainDeGlisser && positionDepartX === 0) return;
+    
+    const seuil = 50; 
+
+    if (differenceX < -seuil) {
+        allerAuSuivant();
+    } else if (differenceX > seuil) {
+        allerAuPrecedent();
+    }
+
+    estEnTrainDeGlisser = false;
+    differenceX = 0;
+    positionDepartX = 0;
+    conteneurCarrousel.style.cursor = 'grab';
 }
 
 if (inputRecherche) {
@@ -373,7 +429,7 @@ boutonsFiltres.forEach(btn => {
 
 mettreAJourCarrousel();
 
-/* Scroll Fluide */
+/* SCROLL FLUIDE */
 document.addEventListener('click', function(e) {
     const lien = e.target.closest('a[href^="#"]');
     if (!lien) return;
@@ -414,7 +470,7 @@ document.addEventListener('click', function(e) {
     requestAnimationFrame(animation);
 });
 
-/* Modale Projet */
+/* MODALE PROJET */
 const modale = document.querySelector('#modale-projet');
 const boutonsFermer = document.querySelectorAll('.btn-fermer-modale');
 
@@ -448,7 +504,6 @@ document.querySelectorAll('.btn-modal-projet').forEach(btn => {
             modalContrib.appendChild(li);
         });
         
-        // Gestion des images
         const imgPrincipale = document.querySelector('#modal-image-principale');
         const containerMiniatures = document.querySelector('.miniatures');
         
@@ -500,7 +555,7 @@ if (modale) {
     });
 }
 
-/* Animation Scroll  */
+/* ANIMATION AU SCROLL */
 const observateur = new IntersectionObserver((entrees) => {
     entrees.forEach(entree => {
         if (entree.isIntersecting) {
