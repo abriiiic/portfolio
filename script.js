@@ -273,7 +273,7 @@ const catalogueProjets = {
     }
 };
 
-/* Carrousel et Filtres */
+/* Carrousel et Filtres*/
 const conteneurCarrousel = document.querySelector('.conteneur-carrousel');
 const toutesLesCartes = document.querySelectorAll('.carte-projet');
 const boutonPrecedent = document.querySelector('#btn-prec');
