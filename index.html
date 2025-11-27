@@ -19,14 +19,13 @@
         </ul>
         <div class="boutons-nav">
             <div class="menu-cv">
-                <button id="btn-telecharger-cv">Télécharger CV</button>
+                <button id="btn-telecharger-cv" data-i18n="btn_telecharger">Télécharger CV</button>
                 <div class="dropdown-cv">
-                    <a href="CV_FR.pdf" download="CV_Kilyan_Gibert_FR.pdf" class="option-cv">CV Français</a>
-                    <a href="CV_EN.pdf" download="CV_Kilyan_Gibert_EN.pdf" class="option-cv">CV Anglais</a>
+                    <a href="CV_FR.pdf" download="CV_Kilyan_Gibert_FR.pdf" class="option-cv" data-i18n="cv_fr">CV Français</a>
+                    <a href="CV_EN.pdf" download="CV_Kilyan_Gibert_EN.pdf" class="option-cv" data-i18n="cv_en">CV Anglais</a>
                 </div>
             </div>
             <button id="bouton-langue" class="btn-secondaire">EN</button>
-            <a href="CV_EN.pdf" download="CV_Kilyan_Gibert.pdf" class="btn-primaire" data-i18n="btn_telecharger">Télécharger CV</a>
         </div>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -35,7 +34,6 @@
 
     <header id="accueil" class="banniere">
         <div class="animation-fond">
-            <span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span>
         </div>
 
@@ -75,7 +73,7 @@
                     <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="cv_formation">Formation</span></h3>
                     <div class="boite-contenu">
                         <div class="element-chrono">
-                            <span class="date">2024 - Présent</span>
+                            <span class="date" data-i18n="date_but">2024 - Présent</span>
                             <h4 data-i18n="titre_but">BUT Informatique (2ème année)</h4>
                             <p class="lieu">Université Savoie Mont Blanc / IUT Annecy</p>
                             <p data-i18n="desc_but">Bachelor Universitaire de Technologie en informatique (En cours).</p>
@@ -102,7 +100,7 @@
                             </ul>
                         </div>
                         <div class="element-chrono">
-                            <span class="date">Juillet - Août 2025</span>
+                            <span class="date" data-i18n="date_ete_2025">Juillet - Août 2025</span>
                             <h4 data-i18n="titre_job_netto">Employé de Rayon</h4>
                             <p class="lieu">Netto, Ambérieu-en-Bugey</p>
                             <ul class="details-job">
@@ -130,64 +128,52 @@
                         <div class="categorie-skill">
                             <strong data-i18n="cat_technique">Technique</strong>
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>HTML / CSS</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%;"></div>
-                                </div>
+                                <div class="skill-header"><span>HTML / CSS</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
                             </div>
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>JavaScript</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%;"></div>
-                                </div>
+                                <div class="skill-header"><span>JavaScript</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
                             </div>
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>PHP / Laravel</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 60%;"></div>
-                                </div>
+                                <div class="skill-header"><span>PHP / Laravel</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 60%;"></div></div>
                             </div>
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>C#</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%;"></div>
-                                </div>
+                                <div class="skill-header"><span>C#</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
                             </div>
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>SQL / PostgreSQL</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 70%;"></div>
-                                </div>
+                                <div class="skill-header"><span>SQL / PostgreSQL</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
                             </div>
                         </div>
                         <div class="categorie-skill">
                             <strong data-i18n="cat_systemes">Systèmes</strong>
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>Linux / Ubuntu</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 70%;"></div>
-                                </div>
+                                <div class="skill-header"><span>Linux / Ubuntu</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
                             </div>
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>Windows</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 95%;"></div>
-                                </div>
+                                <div class="skill-header"><span>Windows</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bloc-cv">
+                    <h3><i class="fas fa-quote-left"></i> <span data-i18n="cv_references">Références</span></h3>
+                    <div class="boite-laterale">
+                        <div class="element-reference">
+                            <h4>Mr. Vibrac</h4>
+                            <p class="role-ref" data-i18n="ref_vibrac_role">Anglais / Coord. International</p>
+                            <p class="lieu-ref">IUT Annecy</p>
+                        </div>
+                        <div class="element-reference">
+                            <h4>Mr. Colin</h4>
+                            <p class="role-ref" data-i18n="ref_colin_role">Enseignant UML & SQL</p>
+                            <p class="lieu-ref">IUT Annecy</p>
                         </div>
                     </div>
                 </div>
@@ -228,7 +214,6 @@
     <section id="projets" class="section">
         <h2 class="titre-section" data-i18n="nav_projets">Mes Projets</h2>
         
-        <!-- Barre de recherche et filtres -->
         <div class="barre-recherche-filtres">
             <div class="conteneur-recherche">
                 <input type="text" id="recherche-projets" class="input-recherche" placeholder="Rechercher un projet..." data-i18n-placeholder="search_projects">
@@ -236,7 +221,7 @@
             </div>
             
             <div class="conteneur-filtres">
-                <button class="btn-filtre active" data-filtre="tous">Tous</button>
+                <button class="btn-filtre active" data-filtre="tous" data-i18n="filtre_tous">Tous</button>
                 <button class="btn-filtre" data-filtre="C#">C#</button>
                 <button class="btn-filtre" data-filtre="PostgreSQL">PostgreSQL</button>
                 <button class="btn-filtre" data-filtre="JavaScript">JavaScript</button>
@@ -249,7 +234,7 @@
                 <div class="contenu-carte">
                     <div class="info-projet">
                         <h3>SAE Application Nicolas</h3>
-                        <p data-i18n="projet_1_desc">Application desktop WPF pour la gestion d'une entreprise de vin.</p>
+                        <p data-i18n="projet_1_desc_courte">Application desktop WPF pour la gestion d'une entreprise de vin.</p>
                     </div>
                     <div class="pile-techno">
                         <span>WPF</span><span>C#</span><span>PostgreSQL</span>
@@ -264,7 +249,7 @@
                 <div class="contenu-carte">
                     <div class="info-projet">
                         <h3 data-i18n="projet_2_titre">Portfolio Personnel</h3>
-                        <p data-i18n="projet_2_desc">Site web responsive présentant mon parcours et mes compétences.</p>
+                        <p data-i18n="projet_2_desc_courte">Site web responsive présentant mon parcours et mes compétences.</p>
                     </div>
                     <div class="pile-techno">
                         <span>HTML</span><span>CSS</span><span>JS</span>
@@ -279,7 +264,7 @@
                 <div class="contenu-carte">
                     <div class="info-projet">
                         <h3 data-i18n="projet_3_titre">SAE Site Web Club Med</h3>
-                        <p data-i18n="projet_3_desc">Reproduction complète du site du Club Med avec Laravel.</p>
+                        <p data-i18n="projet_3_desc_courte">Reproduction complète du site du Club Med avec Laravel.</p>
                     </div>
                     <div class="pile-techno">
                         <span>Laravel</span><span>PostgreSQL</span><span>Blade</span>
@@ -309,25 +294,25 @@
 
                 <div class="galerie-images">
                     <div class="conteneur-image">
-                        <img id="modal-image-principale" src="image.jpg" alt="Image du projet" onerror="this.style.display='none';">
+                        <img id="modal-image-principale" src="" alt="Image du projet" onerror="this.style.display='none';">
                     </div>
-                    <div class="miniatures">
-                        </div>
+                    <div class="miniatures"></div>
                 </div>
 
                 <div class="modale-corps">
                     <div class="section-description">
-                        <h3 data-i18n="modal_desc">Description</h3> <p id="modal-description">Description du projet...</p>
+                        <h3 data-i18n="modal_desc">Description</h3> 
+                        <p id="modal-description">Description du projet...</p>
                     </div>
 
                     <div class="section-technologies">
-                        <h3 data-i18n="modal_tech">Langages utilisés</h3> <div id="modal-technologies" class="liste-technologies">
-                            </div>
+                        <h3 data-i18n="modal_tech">Langages utilisés</h3> 
+                        <div id="modal-technologies" class="liste-technologies"></div>
                     </div>
 
                     <div class="section-contributeurs">
-                        <h3 data-i18n="modal_contrib">Contributeurs</h3> <ul id="modal-contributeurs" class="liste-contributeurs">
-                            </ul>
+                        <h3 data-i18n="modal_contrib">Contributeurs</h3> 
+                        <ul id="modal-contributeurs" class="liste-contributeurs"></ul>
                     </div>
                 </div>
             </div>
@@ -338,7 +323,7 @@
         <h2 class="titre-section" data-i18n="nav_contact">Contactez-moi</h2>
         <div class="enveloppe-contact">
             <div class="carte-contact carte-info cache">
-                <h3>Mes Coordonnées</h3>
+                <h3 data-i18n="titre_coordonnees">Mes Coordonnées</h3>
                 <div class="ligne-info">
                     <div class="boite-icone"><i class="fas fa-phone"></i></div>
                     <div>
@@ -375,15 +360,15 @@
             <div class="carte-contact carte-formulaire cache">
                 <form class="formulaire-contact" action="https://formspree.io/f/xpwbyrnk" method="POST">
                     <div class="groupe-input">
-                        <label>Nom / Name</label>
+                        <label data-i18n="form_nom">Nom / Prénom</label>
                         <input type="text" name="nom" required>
                     </div>
                     <div class="groupe-input">
-                        <label>Email</label>
+                        <label data-i18n="form_email">Email</label>
                         <input type="email" name="email" required>
                     </div>
                     <div class="groupe-input">
-                        <label>Message</label>
+                        <label data-i18n="form_message">Message</label>
                         <textarea rows="5" name="message" required></textarea>
                     </div>
                     <button type="submit" class="btn-primaire" data-i18n="btn_envoyer">Envoyer</button>
@@ -393,7 +378,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Kilyan Gibert. Tous droits réservés.</p>
+        <p data-i18n="footer_droits">&copy; 2025 Kilyan Gibert. Tous droits réservés.</p>
     </footer>
 
     <script src="script.js"></script>
